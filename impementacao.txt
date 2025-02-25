@@ -1,1 +1,2 @@
 touch /var/www/html/simulacao_vendas/logs.json && chmod 666 /var/www/html/simulacao_vendas/logs.json
+php -S 172.29.1.134:8000 -t /home/andre/DEV/php/_ps

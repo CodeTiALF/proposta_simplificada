@@ -19,20 +19,7 @@
         <form id="descontoForm">
             <label for="tabela">Tabela:</label>
             <select id="tabela" name="tabela" class="full-width">
-                <option value="">Selecione a tabela</option>
-                <option value='fev/25 -  LUXO (A VISTA) 100/0'>fev/25 -  LUXO (A VISTA) 100/0</option>
-                <option value='fev/25 -  LUXO (41) 100/0'>fev/25 -  LUXO (41) 100/0</option>
-                <option value='fev/25 - MASTER (A VISTA) 100/0'>fev/25 - MASTER (A VISTA) 100/0</option>
-                <option value='fev/25 - MASTER (41) 100/0'>fev/25 - MASTER (41) 100/0</option>
-                <option value='fev/25 - LANÇAMENTO LUXO (41) 30/70'>fev/25 - LANÇAMENTO LUXO (41) 30/70</option>
-                <option value='fev/25 - LANÇAMENTO (41) 25/75'>fev/25 - LANÇAMENTO (41) 25/75</option>
-                <option value='fev/25 - LANÇAMENTO MASTER (41) 30/70'>fev/25 - LANÇAMENTO MASTER (41) 30/70</option>
-                <option value='fev/25 - LANÇAMENTO MASTER (41) 25/75'>fev/25 - LANÇAMENTO MASTER (41) 25/75</option>
-                <option value='fev/25 - LANÇAMENTO MASTER (41) 25/75'>fev/25 - LANÇAMENTO MASTER (41) 25/75</option>
-                <option value='fev/25 - PROMOCIONAL LUXO (41) 25/75'>fev/25 - PROMOCIONAL LUXO (41) 25/75</option>
-                <option value='fev/25 - PROMOCIONAL MASTER (41) 30/70'>fev/25 - PROMOCIONAL MASTER (41) 30/70</option>
-                <option value='fev/25 - PROMOCIONAL MASTER (41) 25/75'>fev/25 - PROMOCIONAL MASTER (41) 25/75</option>
-
+                <!-- As opções serão carregadas dinamicamente via JavaScript -->
             </select>
 
             <div class="flex-row">
@@ -76,5 +63,32 @@
         
     </div>
     <script src="funcoes.js"></script>
+    <script>
+        // Carregar as opções do select de tabela a partir do arquivo
+        fetch('tabela_nomes.txt')
+            .then(response => response.text())
+            .then(data => {
+                const linhas = data.trim().split('\n');
+                const select = document.getElementById('tabela');
+                
+                // Limpar opções existentes
+                select.innerHTML = '';
+                
+                // Adicionar primeira opção (vazia)
+                const primeiraOpcao = document.createElement('option');
+                primeiraOpcao.value = '';
+                primeiraOpcao.textContent = linhas[0];
+                select.appendChild(primeiraOpcao);
+                
+                // Adicionar as demais opções
+                for (let i = 1; i < linhas.length; i++) {
+                    const opcao = document.createElement('option');
+                    opcao.value = linhas[i];
+                    opcao.textContent = linhas[i];
+                    select.appendChild(opcao);
+                }
+            })
+            .catch(error => console.error('Erro ao carregar opções de tabela:', error));
+    </script>
 </body>
 </html>
