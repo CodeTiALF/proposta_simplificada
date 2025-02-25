@@ -9,5 +9,17 @@
         "valorChaves": 150000,
         "solicitante": "Mulati",
         "desconto": "2.00"
+    },
+    {
+        "data": "2025,-02-24T23:11:57.000Z",
+        "tabela": "fev\/25 - LAN\u00c7AMENTO MASTER (41) 30\/70",
+        "comprador": "carlos",
+        "imovel": "1010",
+        "valorTabela": 510000,
+        "valorNegociado": 495000,
+        "valorChaves": 150000,
+        "solicitante": "Graciano",
+        "desconto": "2.94",
+        "percentagemChaves": "30.3"
     }
 ]

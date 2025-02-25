@@ -219,16 +219,22 @@ async function shareScreenshot() {
         const [day, month, year] = date.split('/');
         const formattedDate = `${year}-${month}-${day}T${time}.000Z`;
         
+        const valorTabela = parseNumero(document.getElementById('valorTabela').value);
+        const valorNegociado = parseNumero(document.getElementById('valorNegociado').value);
+        const valorChaves = parseNumero(document.getElementById('valorChaves').value);
+        const percentagemChaves = ((valorChaves / valorNegociado) * 100).toFixed(1);
+        
         const logData = {
             data: formattedDate,
             tabela: document.getElementById('tabela').value,
             comprador: document.getElementById('comprador').value,
             imovel: document.getElementById('imovel').value,
-            valorTabela: parseNumero(document.getElementById('valorTabela').value),
-            valorNegociado: parseNumero(document.getElementById('valorNegociado').value),
-            valorChaves: parseNumero(document.getElementById('valorChaves').value),
+            valorTabela: valorTabela,
+            valorNegociado: valorNegociado,
+            valorChaves: valorChaves,
             solicitante: document.getElementById('solicitante').value,
-            desconto: ((parseNumero(document.getElementById('valorTabela').value) - parseNumero(document.getElementById('valorNegociado').value)) / parseNumero(document.getElementById('valorTabela').value) * 100).toFixed(2)
+            desconto: ((valorTabela - valorNegociado) / valorTabela * 100).toFixed(2),
+            percentagemChaves: percentagemChaves
         };
 
         // Primeiro salvar o log
