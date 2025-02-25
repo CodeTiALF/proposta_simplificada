@@ -1,0 +1,342 @@
+:root[data-theme="light"] {
+    --bg-color: #f4f4f4;
+    --container-bg: #fff;
+    --text-color: #000;
+    --input-bg: #fff;
+    --input-border: #ccc;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --container-bg: #2d2d2d;
+    --text-color: #fff;
+    --input-bg: #3d3d3d;
+    --input-border: #505050;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 18px;
+    color: var(--text-color);
+    transition: background-color 0.3s;
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 86%;
+    max-width: 400px;
+    /* padding-right: 90px; */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--input-bg);
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.share-button {
+    display: flex;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.share-button.enabled {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.share-button:hover {
+    background-color: var(--input-bg);
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    /* width: 100%; */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-size: 18px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* Formal Document Styles */
+.formal-document {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--container-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    color: var(--text-color);
+    z-index: -1;
+}
+
+.formal-header {
+    text-align: center;
+    border-bottom: 2px solid var(--input-border);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.formal-header h2 {
+    margin: 0 0 10px 0;
+    color: var(--text-color);
+}
+
+.date-time {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.formal-content {
+    padding: 15px 0;
+}
+
+.info-row {
+    margin: 15px 0;
+    padding: 8px;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.info-row strong {
+    color: var(--text-color);
+    margin-right: 10px;
+}
+
+.info-row .sub-info {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-left: 20px;
+}
+
+.info-row.result {
+    font-size: 1.6em;
+    text-align: center;
+    border-top: 2px solid var(--input-border);
+    border-bottom: none;
+    margin-top: 25px;
+    padding-top: 20px;
+}
+
+.negative-discount {
+    color: #ff0000 !important;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.percentage-indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+/* Form layout styles */
+.full-width {
+    width: 100%;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.imovel-container {
+    width: 29%;
+}
+
+.comprador-container {
+    width: 62%;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+        font-size: 16px;
+        height: auto;
+        /* min-height: 50vh; */
+    }
+
+    .container {
+        /* width: 100%; */
+        padding: 15px;
+        margin: 10px; 
+        max-width: none;
+        box-shadow: none;
+    }
+
+    .header-container {
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input, select {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .flex-row {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+
+    .imovel-mobile {
+        width: 60%;
+    }
+
+    .imovel-container {
+        width: 90%; 
+    }
+
+    .comprador-container {
+       width: 180%; 
+    }
+
+    /* Ajustes para o documento formal no mobile */
+    .formal-document {
+        width: 95%;
+        padding: 15px;
+        position: absolute;
+    }
+
+    .formal-content {
+        padding: 10px 0;
+    }
+
+    .info-row {
+        margin: 10px 0;
+        font-size: 0.95em;
+    }
+
+    .info-row.result {
+        font-size: 1.3em;
+    }
+
+    /* Ajustes nos botões para mobile */
+    .buttons-container {
+        gap: 5px;
+    }
+
+    .share-button,
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 1.3em;
+    }
+
+    /* Melhorar visibilidade dos indicadores */
+    .percentage-indicator {
+        font-size: 0.85em;
+        padding-right: 5px;
+    }
+
+    /* Ajuste nas margens e espaçamentos */
+    label {
+        margin-top: 8px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,1 @@
+touch /var/www/html/simulacao_vendas/logs.json && chmod 666 /var/www/html/simulacao_vendas/logs.json
