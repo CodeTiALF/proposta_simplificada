@@ -52,10 +52,7 @@
             
             <label for="solicitante">Solicitante:</label>
             <select id="solicitante" name="solicitante" class="full-width">
-                <option value="">Selecione o solicitante</option>
-                <option value="Mulati">Mulati</option>
-                <option value="Graciano">Graciano</option>
-                <option value="Otavio">Otavio</option>
+                <!-- As opções serão carregadas dinamicamente via JavaScript -->
             </select>
             <button type="submit" style="display: none;">Submit</button>
         </form>
@@ -64,31 +61,37 @@
     </div>
     <script src="funcoes.js"></script>
     <script>
-        // Carregar as opções do select de tabela a partir do arquivo
-        fetch('tabela_nomes.txt')
-            .then(response => response.text())
-            .then(data => {
-                const linhas = data.trim().split('\n');
-                const select = document.getElementById('tabela');
-                
-                // Limpar opções existentes
-                select.innerHTML = '';
-                
-                // Adicionar primeira opção (vazia)
-                const primeiraOpcao = document.createElement('option');
-                primeiraOpcao.value = '';
-                primeiraOpcao.textContent = linhas[0];
-                select.appendChild(primeiraOpcao);
-                
-                // Adicionar as demais opções
-                for (let i = 1; i < linhas.length; i++) {
-                    const opcao = document.createElement('option');
-                    opcao.value = linhas[i];
-                    opcao.textContent = linhas[i];
-                    select.appendChild(opcao);
-                }
-            })
-            .catch(error => console.error('Erro ao carregar opções de tabela:', error));
+        // Função para carregar opções de um arquivo de texto para um select
+        function carregarOpcoesDeArquivo(arquivoUrl, selectId) {
+            fetch(arquivoUrl)
+                .then(response => response.text())
+                .then(data => {
+                    const linhas = data.trim().split('\n');
+                    const select = document.getElementById(selectId);
+                    
+                    // Limpar opções existentes
+                    select.innerHTML = '';
+                    
+                    // Adicionar primeira opção (vazia)
+                    const primeiraOpcao = document.createElement('option');
+                    primeiraOpcao.value = '';
+                    primeiraOpcao.textContent = linhas[0];
+                    select.appendChild(primeiraOpcao);
+                    
+                    // Adicionar as demais opções
+                    for (let i = 1; i < linhas.length; i++) {
+                        const opcao = document.createElement('option');
+                        opcao.value = linhas[i];
+                        opcao.textContent = linhas[i];
+                        select.appendChild(opcao);
+                    }
+                })
+                .catch(error => console.error(`Erro ao carregar opções para ${selectId}:`, error));
+        }
+
+        // Carregar opções para os selects
+        carregarOpcoesDeArquivo('tabela_nomes.txt', 'tabela');
+        carregarOpcoesDeArquivo('solicitante_nomes.txt', 'solicitante');
     </script>
 </body>
 </html>
